@@ -3,7 +3,7 @@ const { assert, expect } = require('chai')
 const CsvReader = require('../../src/csv-reader')
 const resolve = require('path').resolve
 
-describe('CSV reader unit tests', async () => {
+describe('CSV reader unit tests', () => {
   const fields = ['Date', 'Hour', 'Consumption']
   const dataPath = './data/data.csv'
 
