@@ -5,7 +5,10 @@ class Http {
   async get (url, opts) {
     try {
       const data = await needle('get', url, opts)
-      return data.body
+      if (data.statusCode !== 200) {
+        throw new Error(data.body)
+      }
+      return { body: data.body, code: data.statusCode }
     } catch (error) {
       return Promise.reject(error)
     }

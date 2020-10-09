@@ -15,7 +15,7 @@ describe('HTTP module unit tests', () => {
     it('GET', async () => {
       const req = new Http()
       const data = await req.get(urlTest)
-      expect(data).to.have.property('ip')
+      expect(data.body).to.have.property('ip')
     })
     it('GET with options', async () => {
       const req = new Http()
@@ -24,7 +24,7 @@ describe('HTTP module unit tests', () => {
         method: 'GET'
       }
       const data = await req.get(urlTest, options)
-      expect(data).to.have.property('ip')
+      expect(data.body).to.have.property('ip')
     })
   })
 })
