@@ -10,8 +10,11 @@ class Dha {
       const opts = { params: { start_date: start, end_date: end} }
       const http = new Http()
       const api = new Api(process.env.token, http)
-      return await api.get(opts)
-
+      const data = (await api.get(opts)).map((item) => {
+        return ['value', 'datetime'].reduce((result, key) => { result[key] = item[key]; return result; }, {})
+      })
+      console.log('data ',data)
+      return data
     } catch (error) {
       return Promise.reject(error)
     }
