@@ -14,7 +14,7 @@ describe('DHA tests', () => {
       const dha = new Dha()
       const start = '2020-09-05'
       const end = '2020-09-06'
-      const data = await dha.getPriceInRangeDate(start,end)
+      const data = await dha.getPriceInRangeDate(start, end)
       expect(data).to.be.an('array')
       assert.equal(data.length, 25)
     })
