@@ -1,11 +1,11 @@
 
 const { assert, expect } = require('chai')
-const CsvReader = require('../../src/csv-reader')
+const CsvReader = require('../../../src/domain/csv-reader/csv-reader')
 const resolve = require('path').resolve
 
 describe('CSV reader unit tests', () => {
   const fields = ['Date', 'Hour', 'Consumption']
-  const dataPath = './data/data.csv'
+  const dataPath = '../data/data.csv'
 
   describe('Instance', () => {
     it('CSVReader object', () => {
@@ -32,7 +32,7 @@ describe('CSV reader unit tests', () => {
     describe('Validate basic behavior', async () => {
       let data
       before(async () => {
-        const reader = new CsvReader(resolve('./test/data/data.csv'))
+        const reader = new CsvReader(resolve('./test/domain/data/data.csv'))
         data = await reader.load()
       })
 
@@ -54,7 +54,7 @@ describe('CSV reader unit tests', () => {
     })
     describe('Wrong inputs', () => {
       const wrongPath = './csv-reader/data/data.csv'
-      const corruptCsvPath = './test/data/corrupt-data.csv'
+      const corruptCsvPath = './test/domain/data/corrupt-data.csv'
       it('Loading a wrong path', async () => {
         try {
           const reader = new CsvReader(resolve(wrongPath))

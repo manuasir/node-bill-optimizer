@@ -1,6 +1,6 @@
 
 const { assert, expect } = require('chai')
-const Http = require('../../src/http-req')
+const Http = require('../../../src/domain/http-req/http-req')
 
 describe('HTTP module unit tests', () => {
   const urlTest = 'http://ip.jsontest.com'
@@ -25,6 +25,7 @@ describe('HTTP module unit tests', () => {
       }
       const data = await req.get(urlTest, options)
       expect(data.body).to.have.property('ip')
+      return Promise.resolve()
     })
   })
 })

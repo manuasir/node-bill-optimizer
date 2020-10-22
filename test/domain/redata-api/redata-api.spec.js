@@ -1,7 +1,7 @@
 
 const { assert, expect } = require('chai')
-const Http = require('../../src/http-req')
-const Api = require('../../src/redata-api')
+const Http = require('../../../src/domain/http-req/http-req')
+const Api = require('../../../src/domain/redata-api/redata-api')
 
 describe('API Wrapper tests', () => {
   const urlTest = 'http://ip.jsontest.com'
@@ -17,7 +17,7 @@ describe('API Wrapper tests', () => {
       const req = new Http()
       const api = new Api(process.env.token, req)
       const data = await api.get()
-      expect(data.body.indicator.values).to.be.an('array')
+      expect(data).to.be.an('array')
     })
   })
 })

@@ -2,7 +2,7 @@
 const needle = require('needle')
 
 class Http {
-  async get (url, opts) {
+  async get (url, opts = {}) {
     try {
       const data = await needle('get', url, opts)
       if (data.statusCode !== 200) {
