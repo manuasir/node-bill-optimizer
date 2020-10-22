@@ -4,7 +4,6 @@ const Http = require('../../../src/domain/http-req/http-req')
 const Api = require('../../../src/domain/redata-api/redata-api')
 
 describe('API Wrapper tests', () => {
-  const urlTest = 'http://ip.jsontest.com'
   describe('Class instantiation', () => {
     it('Create object', () => {
       const req = new Http()
