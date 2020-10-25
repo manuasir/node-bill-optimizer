@@ -1,3 +1,5 @@
+![Node.js CI](https://github.com/manuasir/node-bill-optimizer/workflows/Node.js%20CI/badge.svg)
+
 ## Electricity bill optimizer
 
 ### Purpose

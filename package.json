@@ -2,6 +2,7 @@
   "name": "bill-optimizer",
   "version": "1.0.0",
   "description": "An electricity bill optimizer",
+  "engines": { "node" : ">=14.13.1" },
   "main": "index.js",
   "scripts": {
     "test": "mocha ./test/**/*.js --timeout 5000"
@@ -33,6 +34,7 @@
   "dependencies": {
     "csv-parser": "^2.3.3",
     "global": "^4.4.0",
-    "needle": "^2.5.2"
+    "needle": "^2.5.2",
+    "telebot": "^1.4.1"
   }
 }
