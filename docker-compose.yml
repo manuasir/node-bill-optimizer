@@ -4,6 +4,5 @@ services:
     build: .
     volumes:
       - /etc/localtime:/etc/localtime:ro
-    environment:
-      - token=
-      - tg_token=
+    env_file:
+      - tokens.env
