@@ -31,8 +31,8 @@ class Bot {
       const start = new Date()
       console.log(' -> start',start)
       const end = new Date().setHours(start.getHours() + 1)
-      const endStr = new Date(end).toISOString()
-      const startStr = start.toISOString()
+      const endStr = new Date(end).toISOString().split('.')[0]
+      const startStr = start.toISOString().split('.')[0]
       const price = await this.dha.getPriceInRangeDate(startStr, endStr)
       console.log('price ',price)
       const msgStr = this.genMsg(price)
