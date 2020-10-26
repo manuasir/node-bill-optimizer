@@ -4,7 +4,7 @@ const PVPC = require('../../../src/application/pvpc/pvpc')
 const Repository = require('../../../src/application/repository/repository')
 const token = process.env.token
 
-describe('DHA tests', () => {
+describe('Repository cache tests', () => {
   describe('Class instantiation', () => {
     it('Create object', () => {
       const pvpc = new PVPC(token)
