@@ -1,7 +1,7 @@
 const Bot = require('./src/application/telegram/bot')
-const Dha = require('./src/application/dha/dha')
+const PVPC = require('./src/application/pvpc/pvpc')
 const token = process.env.token
-const dha = new Dha(token)
+const pvpc = new PVPC(token)
 const tgToken = process.env.tg_token
-const bot = new Bot(tgToken,dha)
+const bot = new Bot(tgToken,pvpc)
 bot.start()

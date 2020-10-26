@@ -1,9 +1,9 @@
 const Telebot = require('telebot')
 
 class Bot {
-  constructor(token, dha) {
+  constructor(token, pvpc) {
     this.bot = new Telebot(token)
-    this.dha = dha
+    this.pvpc = pvpc
   }
 
   async priceToday(msg) {
@@ -29,12 +29,10 @@ class Bot {
   async priceNow(msg) {
     try {
       const start = new Date()
-      console.log(' -> start',start)
       const end = new Date().setHours(start.getHours() + 1)
       const endStr = new Date(end).toISOString().split('.')[0]
       const startStr = start.toISOString().split('.')[0]
-      const price = await this.dha.getPriceInRangeDate(startStr, endStr)
-      console.log('price ',price)
+      const price = await this.pvpc.get(startStr, endStr)
       const msgStr = this.genMsg(price)
       await msg.reply.text(msgStr)
     } catch (error) {

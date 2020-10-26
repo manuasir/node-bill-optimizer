@@ -1,6 +1,6 @@
 const { Api, Http } = require('../../domain/index')
 
-class Dha {
+class PVPC {
   constructor(token){
     this.token = token
   }
@@ -9,8 +9,6 @@ class Dha {
       if (!start || !end ) {
         throw new Error('Missing arguments. (start, end) or bad type. Required Date type.')
       }
-      console.log('start',start)
-      console.log('end',end)
       const opts = { params: { start_date: start, end_date: end } }
       const http = new Http()
       const api = new Api(this.token, http)
@@ -24,4 +22,4 @@ class Dha {
   }
 }
 
-module.exports = Dha
+module.exports = PVPC
