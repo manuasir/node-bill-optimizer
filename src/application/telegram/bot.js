@@ -14,7 +14,7 @@ class Bot {
       const msgStr = this.genMsg(price)
       await msg.reply.text(msgStr)
     } catch (error) {
-      console.error('Error.')
+      console.error('Error.',error)
     }
   }
 
@@ -39,7 +39,7 @@ class Bot {
       start.setTime( start.getTime() - new Date().getTimezoneOffset()*60*1000 )
       start.setMinutes(0,0)
       start.setSeconds(0,0)
-      console.log('BOT NEW DATE ',start)
+
       const end = new Date()
       end.setTime( end.getTime() - new Date().getTimezoneOffset()*60*1000 )
       end.setHours(start.getHours() + 1)
@@ -47,8 +47,8 @@ class Bot {
       end.setSeconds(0,0)
       const endStr = new Date(end).toISOString().split('.')[0]
       const startStr = start.toISOString().split('.')[0]
-      console.log('BOT: start ',startStr)
-      console.log('BOT: END', endStr)
+
+
       const price = await this.pvpc.get(startStr, endStr, indicator)
       const msgStr = this.genMsg(price)
       await msg.reply.text(msgStr)
