@@ -10,7 +10,7 @@ class Bot {
     try {
       const start = new Date().toISOString().split('T')[0] + `T00:00:00`
       const end = new Date().toISOString().split('T')[0] + `T23:59:59`
-      const price = await this.pvpc.getPriceInRangeDate(start, end, indicator)
+      const price = await this.pvpc.get(start, end, indicator)
       const msgStr = this.genMsg(price)
       await msg.reply.text(msgStr)
     } catch (error) {
@@ -27,7 +27,7 @@ class Bot {
       msg +=
         `\n📅 Dia: ${date.toISOString().split('T')[0]}\n` +
         `⌚ Precio desde las ${date.getHours()}:00 a las ${date.getHours() + 1}:00: \n` +
-        `💰 ${(item.value / 1000).toFixed(4)}€ kWh\n` +
+        `💰 ${(item.value / 1000).toFixed(5)}€ kWh\n` +
         `------------------------------------------------`
     })
     return msg
@@ -36,10 +36,20 @@ class Bot {
   async priceNow(msg, indicator) {
     try {
       const start = new Date()
-      const end = new Date().setHours(start.getHours() + 1)
+      start.setTime( start.getTime() - new Date().getTimezoneOffset()*60*1000 )
+      start.setMinutes(0,0)
+      start.setSeconds(0,0)
+      console.log('BOT NEW DATE ',start)
+      const end = new Date()
+      end.setTime( end.getTime() - new Date().getTimezoneOffset()*60*1000 )
+      end.setHours(start.getHours() + 1)
+      end.setMinutes(0,0)
+      end.setSeconds(0,0)
       const endStr = new Date(end).toISOString().split('.')[0]
       const startStr = start.toISOString().split('.')[0]
-      const price = await this.pvpc.getPriceInRangeDate(startStr, endStr, indicator)
+      console.log('BOT: start ',startStr)
+      console.log('BOT: END', endStr)
+      const price = await this.pvpc.get(startStr, endStr, indicator)
       const msgStr = this.genMsg(price)
       await msg.reply.text(msgStr)
     } catch (error) {

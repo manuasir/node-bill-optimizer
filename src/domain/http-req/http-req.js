@@ -4,6 +4,7 @@ const needle = require('needle')
 class Http {
   async get (url, opts = {}) {
     try {
+      console.log('MAKING HTTP REQ ',url)
       const data = await needle('get', url, opts)
       if (data.statusCode !== 200) {
         throw new Error(data.body)
