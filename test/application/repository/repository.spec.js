@@ -68,24 +68,25 @@ describe('Repository cache tests', () => {
     describe('Cache tests', () => {
       const pvpc = new PVPC(token)
       const repo = new Repository(pvpc)
-      const start = '2020-09-05T01:00:00'
-      const end = '2020-09-05T03:00:00'
+      const start = '2020-09-05T03:00:00'
+      const end = '2020-09-05T06:00:00'
       it('Current cache size should be 0', () => {
         assert.equal(repo.getCache().length, 0)
       })
       it('Getting non cached data', async () => {
         const data = await repo.get(start, end)
         const reduced = Object.values(data).reduce((t, { consulted }) => t + consulted, 0)
-        assert.equal(reduced, 3)
+        assert.equal(reduced, 4)
       })
       it('Getting data from cache. Checking consultation incrementation', async () => {
         const data = await repo.get(start, end)
         const reduced = Object.values(data).reduce((t, { consulted }) => t + consulted, 0)
-        assert.equal(reduced, 6)
+        assert.equal(reduced, 8)
       })
+
       it('Getting incomplete cached data', async () => {
-        const start = '2020-09-05T01:00:00'
-        const end = '2020-09-05T05:00:00'
+        const start = '2020-09-05T04:00:00'
+        const end = '2020-09-05T08:00:00'
         const data = await repo.get(start, end)
         const reduced = Object.values(data).reduce((t, { consulted }) => t + consulted, 0)
         assert.equal(reduced, 11)

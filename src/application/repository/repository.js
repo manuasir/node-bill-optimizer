@@ -49,8 +49,15 @@ class DataRepository {
       const date = new Date(item.datetime)
       const startDate = new Date(start)
       const endDate = new Date(end)
-      return date >= startDate && date <= endDate
+      if(date.getTime() < startDate.getTime()) {
+        console.log('date is less than start so it wont be in the filtered result ',date+' --- '+startDate)
+      }
+      if(date.getTime() > endDate.getTime()) {
+        console.log('date is greater than end so it wont be in the filtered result ',date+' --- '+endDate)
+      }
+      return date.getTime() >= startDate.getTime() && date.getTime() <= endDate.getTime()
     })
+    console.log('filtered result ',result)
     return result
   }
 
