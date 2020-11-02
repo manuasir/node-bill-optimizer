@@ -91,6 +91,14 @@ describe('Repository cache tests', () => {
         const reduced = Object.values(data).reduce((t, { consulted }) => t + consulted, 0)
         assert.equal(reduced, 11)
       })
+
+      it('Should get a the full day prices', async () => {
+        const start = '2020-09-05T00:00:00'
+        const end = '2020-09-05T24:00:00'
+        const data = await repo.get(start, end)
+        const reduced = Object.values(data).reduce((t, { consulted }) => t + consulted, 0)
+        assert.equal(reduced, 38)
+      })
     })
   })
 })
