@@ -72,10 +72,7 @@ class Bot {
     data.forEach(item => {
       const date = new Date(item.datetime)
       msg +=
-        `\n📅 ${date.toISOString().split('T')[0]}\n` +
-        `⌚ Precio desde las ${date.getHours()}:00 a las ${date.getHours() + 1}:00: \n` +
-        `💰 ${(item.value / 1000).toFixed(5)}€ kWh\n` +
-        `------------------------------------------------`
+        `${date.getHours()}:00 -> ${date.getHours() + 1}:00: = ${(item.value / 1000).toFixed(5)}\n`
     })
     return msg
   }
