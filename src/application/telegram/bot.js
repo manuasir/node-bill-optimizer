@@ -68,11 +68,11 @@ class Bot {
 
   genMsg(data) {
     if (!data || data.length === 0) throw new Error('No results.')
-    let msg = ''
+    let msg = `Precios del kW/h para el día ${data[0].datetime.split('T')[0]}\n`
     data.forEach(item => {
       const date = new Date(item.datetime)
       msg +=
-        `${date.getHours()}:00 -> ${date.getHours() + 1}:00: = ${(item.value / 1000).toFixed(5)}\n`
+        `${date.getHours()}:00 -> ${date.getHours() + 1}:00: = ${(item.value / 1000).toFixed(5)}€\n`
     })
     return msg
   }
